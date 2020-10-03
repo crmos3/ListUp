@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using BepInEx;
 using HarmonyLib;
 
-namespace Item
+namespace ListUp
 {
     [BepInPlugin("com.github.craftopia.mod.listUp", "ListUp", "1.0.0.0")]
-    public class Class1 : BaseUnityPlugin
+    public class Patcher : BaseUnityPlugin
     {
         void Awake()
         {

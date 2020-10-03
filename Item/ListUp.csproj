@@ -7,8 +7,8 @@
     <ProjectGuid>{FC43373C-197D-4AF1-BA3E-0660F34F6B76}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Item</RootNamespace>
-    <AssemblyName>Item</AssemblyName>
+    <RootNamespace>ListUp</RootNamespace>
+    <AssemblyName>ListUp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -40,6 +40,9 @@
     <Reference Include="BepInEx">
       <HintPath>..\..\Libs\BepInEx.dll</HintPath>
     </Reference>
+    <Reference Include="LibCraftopia">
+      <HintPath>..\..\Libs\LibCraftopia.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,9 +59,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="OcResidentDataPatch.cs" />
+    <Compile Include="OcStaticObjMngPatch.cs" />
+    <Compile Include="Patcher.cs" />
     <Compile Include="OcItemDataMngPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToStringManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
