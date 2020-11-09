@@ -206,6 +206,26 @@ namespace ListUp
                 output.Append(AccessTools.FieldRefAccess<ItemData, float>(value, "addStamina").ToString() + Separator);
                 if (header != null && !header.Contains("addStamina")) header.Add("addStamina");
 
+                name = "buffMaxHealth";
+                output.Append(AccessTools.FieldRefAccess<ItemData, float>(value, "buffMaxHealth").ToString() + Separator);
+                if (header != null && !header.Contains("buffMaxHealth")) header.Add("buffMaxHealth");
+
+                name = "buffMaxMana";
+                output.Append(AccessTools.FieldRefAccess<ItemData, float>(value, "buffMaxMana").ToString() + Separator);
+                if (header != null && !header.Contains("buffMaxMana")) header.Add("buffMaxMana");
+
+                name = "buffAtk";
+                output.Append(AccessTools.FieldRefAccess<ItemData, float>(value, "buffAtk").ToString() + Separator);
+                if (header != null && !header.Contains("buffAtk")) header.Add("buffAtk");
+
+                name = "buffMatk";
+                output.Append(AccessTools.FieldRefAccess<ItemData, float>(value, "buffMatk").ToString() + Separator);
+                if (header != null && !header.Contains("buffMatk")) header.Add("buffMatk");
+
+                name = "buffDef";
+                output.Append(AccessTools.FieldRefAccess<ItemData, float>(value, "buffDef").ToString() + Separator);
+                if (header != null && !header.Contains("buffDef")) header.Add("buffDef");
+
                 name = "atk";
                 output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "atk").ToString() + Separator);
                 if (header != null && !header.Contains("atk")) header.Add("atk");
@@ -270,14 +290,6 @@ namespace ListUp
                 output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "lootEnchantId_03").ToString() + Separator);
                 if (header != null && !header.Contains("lootEnchantId_03")) header.Add("lootEnchantId_03");
 
-                name = "equipmentPassiveSkillId";
-                output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentPassiveSkillId").ToString() + Separator);
-                if (header != null && !header.Contains("equipmentPassiveSkillId")) header.Add("equipmentPassiveSkillId");
-
-                name = "equipmentPassiveSkillLevel";
-                output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentPassiveSkillLevel").ToString() + Separator);
-                if (header != null && !header.Contains("equipmentPassiveSkillLevel")) header.Add("equipmentPassiveSkillLevel");
-
                 name = "equipmentActiveSkillId";
                 output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentActiveSkillId").ToString() + Separator);
                 if (header != null && !header.Contains("equipmentActiveSkillId")) header.Add("equipmentActiveSkillId");
@@ -285,6 +297,38 @@ namespace ListUp
                 name = "equipmentActiveSkillLevel";
                 output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentActiveSkillLevel").ToString() + Separator);
                 if (header != null && !header.Contains("equipmentActiveSkillLevel")) header.Add("equipmentActiveSkillLevel");
+
+                name = "equipmentPassiveSkillId1";
+                output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentPassiveSkillId1").ToString() + Separator);
+                if (header != null && !header.Contains("equipmentPassiveSkillId1")) header.Add("equipmentPassiveSkillId1");
+
+                name = "equipmentPassiveSkillLevel1";
+                output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentPassiveSkillLevel1").ToString() + Separator);
+                if (header != null && !header.Contains("equipmentPassiveSkillLevel1")) header.Add("equipmentPassiveSkillLevel1");
+
+                name = "equipmentPassiveSkillId2";
+                output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentPassiveSkillId2").ToString() + Separator);
+                if (header != null && !header.Contains("equipmentPassiveSkillId2")) header.Add("equipmentPassiveSkillId2");
+
+                name = "equipmentPassiveSkillLevel2";
+                output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentPassiveSkillLevel2").ToString() + Separator);
+                if (header != null && !header.Contains("equipmentPassiveSkillLevel2")) header.Add("equipmentPassiveSkillLevel2");
+
+                name = "equipmentPassiveSkillId3";
+                output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentPassiveSkillId3").ToString() + Separator);
+                if (header != null && !header.Contains("equipmentPassiveSkillId3")) header.Add("equipmentPassiveSkillId3");
+
+                name = "equipmentPassiveSkillLevel3";
+                output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentPassiveSkillLevel3").ToString() + Separator);
+                if (header != null && !header.Contains("equipmentPassiveSkillLevel3")) header.Add("equipmentPassiveSkillLevel3");
+
+                name = "equipmentPassiveSkillId4";
+                output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentPassiveSkillId4").ToString() + Separator);
+                if (header != null && !header.Contains("equipmentPassiveSkillId4")) header.Add("equipmentPassiveSkillId4");
+
+                name = "equipmentPassiveSkillLevel4";
+                output.Append(AccessTools.FieldRefAccess<ItemData, int>(value, "equipmentPassiveSkillLevel4").ToString() + Separator);
+                if (header != null && !header.Contains("equipmentPassiveSkillLevel4")) header.Add("equipmentPassiveSkillLevel4");
 
                 name = "extraValue_A";
                 output.Append(AccessTools.FieldRefAccess<ItemData, float>(value, "extraValue_A").ToString() + Separator);
@@ -296,27 +340,18 @@ namespace ListUp
 
                 name = "activeSkillType";
                 {
-                    var field = AccessTools.FieldRefAccess<ItemData, OcPlActiveSkillType>(value, "activeSkillType");
-                    try
-                    {
-                        int canCast = (int)field;
-                        output.Append((OcPlActiveSkillType)canCast + Separator);
-                        if (header != null && !header.Contains("activeSkillType")) header.Add("activeSkillType");
-                    }
-                    catch { }
+                    var field = AccessTools.FieldRefAccess<ItemData, OcPlActiveSkillType>(value, "activeSkillType"); int canCast = (int)field;
+                    output.Append((OcPlActiveSkillType)canCast + Separator);
+                    if (header != null && !header.Contains("activeSkillType")) header.Add("activeSkillType");
                 }
 
                 name = "passiveSkillType";
                 {
-                    var field = AccessTools.FieldRefAccess<ItemData, OcPlPassiveSkillType>(value, "passiveSkillType");
-                    try
-                    {
-                        int canCast = (int)field;
-                        output.Append((OcPlPassiveSkillType)canCast);
-                        if (header != null && !header.Contains("passiveSkillType")) header.Add("passiveSkillType");
-                    }
-                    catch { }
+                    var field = AccessTools.FieldRefAccess<ItemData, OcPlPassiveSkillType>(value, "passiveSkillType"); int canCast = (int)field;
+                    output.Append((OcPlPassiveSkillType)canCast);
+                    if (header != null && !header.Contains("passiveSkillType")) header.Add("passiveSkillType");
                 }
+
             }
             catch
             {
@@ -353,21 +388,24 @@ namespace ListUp
                 output.Append(AccessTools.FieldRefAccess<SoEnchantment, int>(value, "status").ToString() + Separator);
                 if (header != null && !header.Contains("status")) header.Add("status");
 
+                name = "isTreasureDropped";
+                output.Append(AccessTools.FieldRefAccess<SoEnchantment, int>(value, "isTreasureDropped").ToString() + Separator);
+                if (header != null && !header.Contains("isTreasureDropped")) header.Add("isTreasureDropped");
+
                 name = "rarity";
                 {
-                    var field = AccessTools.FieldRefAccess<SoEnchantment, EnchantRarity>(value, "rarity");
-                    try
-                    {
-                        int canCast = (int)field;
-                        output.Append((EnchantRarity)canCast + Separator);
-                        if (header != null && !header.Contains("rarity")) header.Add("rarity");
-                    }
-                    catch { }
+                    var field = AccessTools.FieldRefAccess<SoEnchantment, EnchantRarity>(value, "rarity"); int canCast = (int)field;
+                    output.Append((EnchantRarity)canCast + Separator);
+                    if (header != null && !header.Contains("rarity")) header.Add("rarity");
                 }
 
                 name = "limitedCategoryId";
                 output.Append(AccessTools.FieldRefAccess<SoEnchantment, int>(value, "limitedCategoryId").ToString() + Separator);
                 if (header != null && !header.Contains("limitedCategoryId")) header.Add("limitedCategoryId");
+
+                name = "only_Shield";
+                output.Append(AccessTools.FieldRefAccess<SoEnchantment, bool>(value, "only_Shield").ToString() + Separator);
+                if (header != null && !header.Contains("only_Shield")) header.Add("only_Shield");
 
                 name = "modify_Atk";
                 output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_Atk").ToString() + Separator);
@@ -429,6 +467,14 @@ namespace ListUp
                 output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_CriticalDmgRate").ToString() + Separator);
                 if (header != null && !header.Contains("modify_CriticalDmgRate")) header.Add("modify_CriticalDmgRate");
 
+                name = "modify_IncreaseAtkByDefRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_IncreaseAtkByDefRate").ToString() + Separator);
+                if (header != null && !header.Contains("modify_IncreaseAtkByDefRate")) header.Add("modify_IncreaseAtkByDefRate");
+
+                name = "modify_IncreaseMAtkByDefRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_IncreaseMAtkByDefRate").ToString() + Separator);
+                if (header != null && !header.Contains("modify_IncreaseMAtkByDefRate")) header.Add("modify_IncreaseMAtkByDefRate");
+
                 name = "modify_SpConsumeRate";
                 output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_SpConsumeRate").ToString() + Separator);
                 if (header != null && !header.Contains("modify_SpConsumeRate")) header.Add("modify_SpConsumeRate");
@@ -437,17 +483,17 @@ namespace ListUp
                 output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_StConsumeRate").ToString() + Separator);
                 if (header != null && !header.Contains("modify_StConsumeRate")) header.Add("modify_StConsumeRate");
 
-                name = "modify_ManConsumeRate";
-                output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_ManConsumeRate").ToString() + Separator);
-                if (header != null && !header.Contains("modify_ManConsumeRate")) header.Add("modify_ManConsumeRate");
+                name = "modify_ManaConsumeRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_ManaConsumeRate").ToString() + Separator);
+                if (header != null && !header.Contains("modify_ManaConsumeRate")) header.Add("modify_ManaConsumeRate");
 
-                name = "modify_StRecoverRate";
-                output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_StRecoverRate").ToString() + Separator);
-                if (header != null && !header.Contains("modify_StRecoverRate")) header.Add("modify_StRecoverRate");
+                name = "modify_StRegenerateRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_StRegenerateRate").ToString() + Separator);
+                if (header != null && !header.Contains("modify_StRegenerateRate")) header.Add("modify_StRegenerateRate");
 
-                name = "modify_ManaRecoverRate";
-                output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_ManaRecoverRate").ToString() + Separator);
-                if (header != null && !header.Contains("modify_ManaRecoverRate")) header.Add("modify_ManaRecoverRate");
+                name = "modify_ManaRegenerateRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_ManaRegenerateRate").ToString() + Separator);
+                if (header != null && !header.Contains("modify_ManaRegenerateRate")) header.Add("modify_ManaRegenerateRate");
 
                 name = "modify_SkillCoolDownRate";
                 output.Append(AccessTools.FieldRefAccess<SoEnchantment, float>(value, "modify_SkillCoolDownRate").ToString() + Separator);
@@ -550,8 +596,12 @@ namespace ListUp
                 if (header != null && !header.Contains("equipmentPassiveSkillId")) header.Add("equipmentPassiveSkillId");
 
                 name = "equipmentPassiveSkillLevel";
-                output.Append(AccessTools.FieldRefAccess<SoEnchantment, int>(value, "equipmentPassiveSkillLevel").ToString());
+                output.Append(AccessTools.FieldRefAccess<SoEnchantment, int>(value, "equipmentPassiveSkillLevel").ToString() + Separator);
                 if (header != null && !header.Contains("equipmentPassiveSkillLevel")) header.Add("equipmentPassiveSkillLevel");
+
+                name = "cantWash";
+                output.Append(AccessTools.FieldRefAccess<SoEnchantment, bool>(value, "cantWash").ToString());
+                if (header != null && !header.Contains("cantWash")) header.Add("cantWash");
             }
             catch
             {
@@ -569,12 +619,12 @@ namespace ListUp
             output.Append(Prefix);
 
             LanguageManager.ChangeLanguage("English");
-            output.Append(value.name);
+            output.Append(value.Name);
             if (header != null && !header.Contains("EnglishName")) header.Add("EnglishName");
             output.Append(Separator);
 
             LanguageManager.ChangeLanguage("Japanese");
-            output.Append(value.name);
+            output.Append(value.Name);
             if (header != null && !header.Contains("JapaneseName")) header.Add("JapaneseName");
             output.Append(Separator);
 
@@ -612,6 +662,22 @@ namespace ListUp
                 output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "uniqueEnchantId_01").ToString() + Separator);
                 if (header != null && !header.Contains("uniqueEnchantId_01")) header.Add("uniqueEnchantId_01");
 
+                name = "uniqueEnchantId_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "uniqueEnchantId_02").ToString() + Separator);
+                if (header != null && !header.Contains("uniqueEnchantId_02")) header.Add("uniqueEnchantId_02");
+
+                name = "uniqueEnchantId_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "uniqueEnchantId_03").ToString() + Separator);
+                if (header != null && !header.Contains("uniqueEnchantId_03")) header.Add("uniqueEnchantId_03");
+
+                name = "uniqueEnchantId_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "uniqueEnchantId_04").ToString() + Separator);
+                if (header != null && !header.Contains("uniqueEnchantId_04")) header.Add("uniqueEnchantId_04");
+
+                name = "uniqueEnchantId_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "uniqueEnchantId_05").ToString() + Separator);
+                if (header != null && !header.Contains("uniqueEnchantId_05")) header.Add("uniqueEnchantId_05");
+
                 name = "capturedItemId";
                 output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "capturedItemId").ToString() + Separator);
                 if (header != null && !header.Contains("capturedItemId")) header.Add("capturedItemId");
@@ -648,6 +714,22 @@ namespace ListUp
                 output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d00_enchantRate_01").ToString() + Separator);
                 if (header != null && !header.Contains("d00_enchantRate_01")) header.Add("d00_enchantRate_01");
 
+                name = "d00_enchantRate_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d00_enchantRate_02").ToString() + Separator);
+                if (header != null && !header.Contains("d00_enchantRate_02")) header.Add("d00_enchantRate_02");
+
+                name = "d00_enchantRate_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d00_enchantRate_03").ToString() + Separator);
+                if (header != null && !header.Contains("d00_enchantRate_03")) header.Add("d00_enchantRate_03");
+
+                name = "d00_enchantRate_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d00_enchantRate_04").ToString() + Separator);
+                if (header != null && !header.Contains("d00_enchantRate_04")) header.Add("d00_enchantRate_04");
+
+                name = "d00_enchantRate_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d00_enchantRate_05").ToString() + Separator);
+                if (header != null && !header.Contains("d00_enchantRate_05")) header.Add("d00_enchantRate_05");
+
                 name = "d01_dropItemId";
                 output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d01_dropItemId").ToString() + Separator);
                 if (header != null && !header.Contains("d01_dropItemId")) header.Add("d01_dropItemId");
@@ -667,6 +749,22 @@ namespace ListUp
                 name = "d01_enchantRate_01";
                 output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d01_enchantRate_01").ToString() + Separator);
                 if (header != null && !header.Contains("d01_enchantRate_01")) header.Add("d01_enchantRate_01");
+
+                name = "d01_enchantRate_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d01_enchantRate_02").ToString() + Separator);
+                if (header != null && !header.Contains("d01_enchantRate_02")) header.Add("d01_enchantRate_02");
+
+                name = "d01_enchantRate_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d01_enchantRate_03").ToString() + Separator);
+                if (header != null && !header.Contains("d01_enchantRate_03")) header.Add("d01_enchantRate_03");
+
+                name = "d01_enchantRate_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d01_enchantRate_04").ToString() + Separator);
+                if (header != null && !header.Contains("d01_enchantRate_04")) header.Add("d01_enchantRate_04");
+
+                name = "d01_enchantRate_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d01_enchantRate_05").ToString() + Separator);
+                if (header != null && !header.Contains("d01_enchantRate_05")) header.Add("d01_enchantRate_05");
 
                 name = "d02_dropItemId";
                 output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d02_dropItemId").ToString() + Separator);
@@ -688,6 +786,22 @@ namespace ListUp
                 output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d02_enchantRate_01").ToString() + Separator);
                 if (header != null && !header.Contains("d02_enchantRate_01")) header.Add("d02_enchantRate_01");
 
+                name = "d02_enchantRate_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d02_enchantRate_02").ToString() + Separator);
+                if (header != null && !header.Contains("d02_enchantRate_02")) header.Add("d02_enchantRate_02");
+
+                name = "d02_enchantRate_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d02_enchantRate_03").ToString() + Separator);
+                if (header != null && !header.Contains("d02_enchantRate_03")) header.Add("d02_enchantRate_03");
+
+                name = "d02_enchantRate_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d02_enchantRate_04").ToString() + Separator);
+                if (header != null && !header.Contains("d02_enchantRate_04")) header.Add("d02_enchantRate_04");
+
+                name = "d02_enchantRate_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d02_enchantRate_05").ToString() + Separator);
+                if (header != null && !header.Contains("d02_enchantRate_05")) header.Add("d02_enchantRate_05");
+
                 name = "d03_dropItemId";
                 output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d03_dropItemId").ToString() + Separator);
                 if (header != null && !header.Contains("d03_dropItemId")) header.Add("d03_dropItemId");
@@ -707,6 +821,238 @@ namespace ListUp
                 name = "d03_enchantRate_01";
                 output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d03_enchantRate_01").ToString() + Separator);
                 if (header != null && !header.Contains("d03_enchantRate_01")) header.Add("d03_enchantRate_01");
+
+                name = "d03_enchantRate_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d03_enchantRate_02").ToString() + Separator);
+                if (header != null && !header.Contains("d03_enchantRate_02")) header.Add("d03_enchantRate_02");
+
+                name = "d03_enchantRate_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d03_enchantRate_03").ToString() + Separator);
+                if (header != null && !header.Contains("d03_enchantRate_03")) header.Add("d03_enchantRate_03");
+
+                name = "d03_enchantRate_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d03_enchantRate_04").ToString() + Separator);
+                if (header != null && !header.Contains("d03_enchantRate_04")) header.Add("d03_enchantRate_04");
+
+                name = "d03_enchantRate_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d03_enchantRate_05").ToString() + Separator);
+                if (header != null && !header.Contains("d03_enchantRate_05")) header.Add("d03_enchantRate_05");
+
+                name = "d04_dropItemId";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d04_dropItemId").ToString() + Separator);
+                if (header != null && !header.Contains("d04_dropItemId")) header.Add("d04_dropItemId");
+
+                name = "d04_dropItemNum";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d04_dropItemNum").ToString() + Separator);
+                if (header != null && !header.Contains("d04_dropItemNum")) header.Add("d04_dropItemNum");
+
+                name = "d04_dropRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d04_dropRate").ToString() + Separator);
+                if (header != null && !header.Contains("d04_dropRate")) header.Add("d04_dropRate");
+
+                name = "d04_enchantRate_00";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d04_enchantRate_00").ToString() + Separator);
+                if (header != null && !header.Contains("d04_enchantRate_00")) header.Add("d04_enchantRate_00");
+
+                name = "d04_enchantRate_01";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d04_enchantRate_01").ToString() + Separator);
+                if (header != null && !header.Contains("d04_enchantRate_01")) header.Add("d04_enchantRate_01");
+
+                name = "d04_enchantRate_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d04_enchantRate_02").ToString() + Separator);
+                if (header != null && !header.Contains("d04_enchantRate_02")) header.Add("d04_enchantRate_02");
+
+                name = "d04_enchantRate_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d04_enchantRate_03").ToString() + Separator);
+                if (header != null && !header.Contains("d04_enchantRate_03")) header.Add("d04_enchantRate_03");
+
+                name = "d04_enchantRate_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d04_enchantRate_04").ToString() + Separator);
+                if (header != null && !header.Contains("d04_enchantRate_04")) header.Add("d04_enchantRate_04");
+
+                name = "d04_enchantRate_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d04_enchantRate_05").ToString() + Separator);
+                if (header != null && !header.Contains("d04_enchantRate_05")) header.Add("d04_enchantRate_05");
+
+                name = "d05_dropItemId";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d05_dropItemId").ToString() + Separator);
+                if (header != null && !header.Contains("d05_dropItemId")) header.Add("d05_dropItemId");
+
+                name = "d05_dropItemNum";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d05_dropItemNum").ToString() + Separator);
+                if (header != null && !header.Contains("d05_dropItemNum")) header.Add("d05_dropItemNum");
+
+                name = "d05_dropRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d05_dropRate").ToString() + Separator);
+                if (header != null && !header.Contains("d05_dropRate")) header.Add("d05_dropRate");
+
+                name = "d05_enchantRate_00";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d05_enchantRate_00").ToString() + Separator);
+                if (header != null && !header.Contains("d05_enchantRate_00")) header.Add("d05_enchantRate_00");
+
+                name = "d05_enchantRate_01";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d05_enchantRate_01").ToString() + Separator);
+                if (header != null && !header.Contains("d05_enchantRate_01")) header.Add("d05_enchantRate_01");
+
+                name = "d05_enchantRate_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d05_enchantRate_02").ToString() + Separator);
+                if (header != null && !header.Contains("d05_enchantRate_02")) header.Add("d05_enchantRate_02");
+
+                name = "d05_enchantRate_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d05_enchantRate_03").ToString() + Separator);
+                if (header != null && !header.Contains("d05_enchantRate_03")) header.Add("d05_enchantRate_03");
+
+                name = "d05_enchantRate_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d05_enchantRate_04").ToString() + Separator);
+                if (header != null && !header.Contains("d05_enchantRate_04")) header.Add("d05_enchantRate_04");
+
+                name = "d05_enchantRate_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d05_enchantRate_05").ToString() + Separator);
+                if (header != null && !header.Contains("d05_enchantRate_05")) header.Add("d05_enchantRate_05");
+
+                name = "d06_dropItemId";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d06_dropItemId").ToString() + Separator);
+                if (header != null && !header.Contains("d06_dropItemId")) header.Add("d06_dropItemId");
+
+                name = "d06_dropItemNum";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d06_dropItemNum").ToString() + Separator);
+                if (header != null && !header.Contains("d06_dropItemNum")) header.Add("d06_dropItemNum");
+
+                name = "d06_dropRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d06_dropRate").ToString() + Separator);
+                if (header != null && !header.Contains("d06_dropRate")) header.Add("d06_dropRate");
+
+                name = "d06_enchantRate_00";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d06_enchantRate_00").ToString() + Separator);
+                if (header != null && !header.Contains("d06_enchantRate_00")) header.Add("d06_enchantRate_00");
+
+                name = "d06_enchantRate_01";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d06_enchantRate_01").ToString() + Separator);
+                if (header != null && !header.Contains("d06_enchantRate_01")) header.Add("d06_enchantRate_01");
+
+                name = "d06_enchantRate_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d06_enchantRate_02").ToString() + Separator);
+                if (header != null && !header.Contains("d06_enchantRate_02")) header.Add("d06_enchantRate_02");
+
+                name = "d06_enchantRate_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d06_enchantRate_03").ToString() + Separator);
+                if (header != null && !header.Contains("d06_enchantRate_03")) header.Add("d06_enchantRate_03");
+
+                name = "d06_enchantRate_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d06_enchantRate_04").ToString() + Separator);
+                if (header != null && !header.Contains("d06_enchantRate_04")) header.Add("d06_enchantRate_04");
+
+                name = "d06_enchantRate_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d06_enchantRate_05").ToString() + Separator);
+                if (header != null && !header.Contains("d06_enchantRate_05")) header.Add("d06_enchantRate_05");
+
+                name = "d07_dropItemId";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d07_dropItemId").ToString() + Separator);
+                if (header != null && !header.Contains("d07_dropItemId")) header.Add("d07_dropItemId");
+
+                name = "d07_dropItemNum";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d07_dropItemNum").ToString() + Separator);
+                if (header != null && !header.Contains("d07_dropItemNum")) header.Add("d07_dropItemNum");
+
+                name = "d07_dropRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d07_dropRate").ToString() + Separator);
+                if (header != null && !header.Contains("d07_dropRate")) header.Add("d07_dropRate");
+
+                name = "d07_enchantRate_00";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d07_enchantRate_00").ToString() + Separator);
+                if (header != null && !header.Contains("d07_enchantRate_00")) header.Add("d07_enchantRate_00");
+
+                name = "d07_enchantRate_01";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d07_enchantRate_01").ToString() + Separator);
+                if (header != null && !header.Contains("d07_enchantRate_01")) header.Add("d07_enchantRate_01");
+
+                name = "d07_enchantRate_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d07_enchantRate_02").ToString() + Separator);
+                if (header != null && !header.Contains("d07_enchantRate_02")) header.Add("d07_enchantRate_02");
+
+                name = "d07_enchantRate_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d07_enchantRate_03").ToString() + Separator);
+                if (header != null && !header.Contains("d07_enchantRate_03")) header.Add("d07_enchantRate_03");
+
+                name = "d07_enchantRate_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d07_enchantRate_04").ToString() + Separator);
+                if (header != null && !header.Contains("d07_enchantRate_04")) header.Add("d07_enchantRate_04");
+
+                name = "d07_enchantRate_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d07_enchantRate_05").ToString() + Separator);
+                if (header != null && !header.Contains("d07_enchantRate_05")) header.Add("d07_enchantRate_05");
+
+                name = "d08_dropItemId";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d08_dropItemId").ToString() + Separator);
+                if (header != null && !header.Contains("d08_dropItemId")) header.Add("d08_dropItemId");
+
+                name = "d08_dropItemNum";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d08_dropItemNum").ToString() + Separator);
+                if (header != null && !header.Contains("d08_dropItemNum")) header.Add("d08_dropItemNum");
+
+                name = "d08_dropRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d08_dropRate").ToString() + Separator);
+                if (header != null && !header.Contains("d08_dropRate")) header.Add("d08_dropRate");
+
+                name = "d08_enchantRate_00";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d08_enchantRate_00").ToString() + Separator);
+                if (header != null && !header.Contains("d08_enchantRate_00")) header.Add("d08_enchantRate_00");
+
+                name = "d08_enchantRate_01";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d08_enchantRate_01").ToString() + Separator);
+                if (header != null && !header.Contains("d08_enchantRate_01")) header.Add("d08_enchantRate_01");
+
+                name = "d08_enchantRate_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d08_enchantRate_02").ToString() + Separator);
+                if (header != null && !header.Contains("d08_enchantRate_02")) header.Add("d08_enchantRate_02");
+
+                name = "d08_enchantRate_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d08_enchantRate_03").ToString() + Separator);
+                if (header != null && !header.Contains("d08_enchantRate_03")) header.Add("d08_enchantRate_03");
+
+                name = "d08_enchantRate_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d08_enchantRate_04").ToString() + Separator);
+                if (header != null && !header.Contains("d08_enchantRate_04")) header.Add("d08_enchantRate_04");
+
+                name = "d08_enchantRate_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d08_enchantRate_05").ToString() + Separator);
+                if (header != null && !header.Contains("d08_enchantRate_05")) header.Add("d08_enchantRate_05");
+
+                name = "d09_dropItemId";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d09_dropItemId").ToString() + Separator);
+                if (header != null && !header.Contains("d09_dropItemId")) header.Add("d09_dropItemId");
+
+                name = "d09_dropItemNum";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "d09_dropItemNum").ToString() + Separator);
+                if (header != null && !header.Contains("d09_dropItemNum")) header.Add("d09_dropItemNum");
+
+                name = "d09_dropRate";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d09_dropRate").ToString() + Separator);
+                if (header != null && !header.Contains("d09_dropRate")) header.Add("d09_dropRate");
+
+                name = "d09_enchantRate_00";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d09_enchantRate_00").ToString() + Separator);
+                if (header != null && !header.Contains("d09_enchantRate_00")) header.Add("d09_enchantRate_00");
+
+                name = "d09_enchantRate_01";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d09_enchantRate_01").ToString() + Separator);
+                if (header != null && !header.Contains("d09_enchantRate_01")) header.Add("d09_enchantRate_01");
+
+                name = "d09_enchantRate_02";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d09_enchantRate_02").ToString() + Separator);
+                if (header != null && !header.Contains("d09_enchantRate_02")) header.Add("d09_enchantRate_02");
+
+                name = "d09_enchantRate_03";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d09_enchantRate_03").ToString() + Separator);
+                if (header != null && !header.Contains("d09_enchantRate_03")) header.Add("d09_enchantRate_03");
+
+                name = "d09_enchantRate_04";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d09_enchantRate_04").ToString() + Separator);
+                if (header != null && !header.Contains("d09_enchantRate_04")) header.Add("d09_enchantRate_04");
+
+                name = "d09_enchantRate_05";
+                output.Append(AccessTools.FieldRefAccess<SoEnemyData, float>(value, "d09_enchantRate_05").ToString() + Separator);
+                if (header != null && !header.Contains("d09_enchantRate_05")) header.Add("d09_enchantRate_05");
 
                 name = "produceItemId";
                 output.Append(AccessTools.FieldRefAccess<SoEnemyData, int>(value, "produceItemId").ToString() + Separator);

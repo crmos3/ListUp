@@ -16,7 +16,7 @@ namespace ListUp
 
         static string filePath = @"d:\StaticObjList.txt";
 
-        /*public static void Postfix(List<OcStaticObj_Spawner> ____ObjBuff_Spawner)
+        public static void Postfix(List<OcStaticObj_Spawner> ____ObjBuff_Spawner)
         {
 
             bool first = true;
@@ -41,20 +41,6 @@ namespace ListUp
                 }
             }
             File.WriteAllText(filePath, output.ToString());
-        }*/
-        public static void Postfix(List<OcStaticObj_Spawner> ____ObjBuff_Spawner)
-        {
-            return;
-            foreach (OcStaticObj_Spawner ocStaticObj_Spawner in ____ObjBuff_Spawner)
-            {
-                var target = ocStaticObj_Spawner.GetComponentInChildren<OcStaticObj>(true).SoEnemyData;
-                if (target.ID == 43)
-                {
-                    var traverse = new Traverse(target);
-                    traverse.Field<float>("d01_enchantRate_01").Value = 0.5f;
-                }
-            }
-            
         }
     }
 }

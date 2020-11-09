@@ -39,7 +39,6 @@ namespace ListUp
                 }
             }
             File.WriteAllText(filePath, output.ToString());
-
             return true;
         }
 

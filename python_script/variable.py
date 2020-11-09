@@ -20,15 +20,14 @@ result = re.finditer(r"(private|public|internal)+ [^ ]+ [^\r\n]+;", text_data)
 variables = []
 i = 0
 for matches in result:
-    #print(matches.group())
     variable_text = re.finditer(r"[^ ;]+", matches.group())
     for match in variable_text:
-        print(match.group())
         if i % 3 == 0:
             pass
         if i % 3 == 1:
             variable_type = match.group()
-            if variable_type == "const" or variable_type == "static":
+            if variable_type == "const" or variable_type == "static" or  variable_type == "abstract" or variable_type == "readonly":
+                i = 0
                 break
         if i % 3 == 2:
             variable_name = match.group()
@@ -37,9 +36,13 @@ for matches in result:
             break
         i += 1
 
+for v in variables:
+    print(v)
+print("\n")
+
 output = ""
 for variable in variables:
-    if variable[0] == "int" or variable[0] == "float":
+    if variable[0] == "int" or variable[0] == "float" or variable[0] == "bool":
         output += "\
             \tname = \"{1}\";\n\
             \toutput.Append(AccessTools.FieldRefAccess<{2}, {0}>(value, \"{1}\").ToString() + Separator);\n\
