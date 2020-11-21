@@ -12,33 +12,31 @@ using LibCraftopia;
 namespace ListUp
 {
     [HarmonyPatch(typeof(OcItemDataMng))]
-    //[HarmonyPatch("SetupCraftableItems")]
     [HarmonyPatch("SetupCraftableItems")]
     class OcItemDataMngPatch
     {
 
-        static string filePath = @"d:\ItemList.txt"; 
-
         static bool Prefix(ItemData[] ___validItemDataList)
         {
-            bool first = true;
-            List<string> header = new List<string>();
-            StringBuilder output = new StringBuilder(100000); 
-            foreach(var item in ___validItemDataList)
+            var reflector = new Reflector<ItemData>();
+
+            var header = reflector.GetHeader();
+            header.Insert(0, "JapaneseName");
+            header.Insert(0, "EnglishName");
+            var values = new List<Dictionary<string, string>>();
+
+            foreach (ItemData item in ___validItemDataList)
             {
-                if (first)
-                {
-                    first = false;
-                    var text = ToStringManager.Stringfy(item, header);
-                    output.Append(ToStringManager.ConstructHeader(header));
-                    output.Append(text);
-                }
-                else
-                {
-                    output.Append(ToStringManager.Stringfy(item));
-                }
+                var value = reflector.GetTargetValues(item);
+                LanguageUtils.English();
+                value["EnglishName"] = item.DisplayName;
+                LanguageUtils.Japanese();
+                value["JapaneseName"] = item.DisplayName;
+                values.Add(value);
             }
-            File.WriteAllText(filePath, output.ToString());
+
+            SingletonMonoBehaviour<FileWriter>.Inst.Write("ItemList", header, values);
+
             return true;
         }
 

@@ -17,39 +17,37 @@ namespace ListUp
     {
         static void Postfix(SoEnemyArray ____SoEnemyArray)
         {
-            write(____SoEnemyArray, @"d:\EnemyList_Default.txt", "SoEmData");
-            write(____SoEnemyArray, @"d:\EnemyList_Lv30.txt", "SoEmDataLv30");
-            write(____SoEnemyArray, @"d:\EnemyList_Lv60.txt", "SoEmDataLv60");
-            write(____SoEnemyArray, @"d:\EnemyList_Lv90.txt", "SoEmDataLv90");
-
+            write(____SoEnemyArray, "EnemyList_Default", "SoEmData");
+            write(____SoEnemyArray, "EnemyList_Lv30", "SoEmDataLv30");
+            write(____SoEnemyArray, "EnemyList_Lv60", "SoEmDataLv60");
+            write(____SoEnemyArray, "EnemyList_Lv90", "SoEmDataLv90");
         }
 
-        static void write(SoEnemyArray ____SoEnemyArray, string filePath, string variableName)
+        static void write(SoEnemyArray ____SoEnemyArray, string fileName, string variableName)
         {
-            bool first = true;
-            List<string> header = new List<string>();
-            StringBuilder output = new StringBuilder(100000);
-            foreach (var enemy in ____SoEnemyArray.EmArray)
+            var reflector = new Reflector<SoEnemyData>();
+
+            var header = reflector.GetHeader();
+            header.Insert(0, "JapaneseName");
+            header.Insert(0, "EnglishName");
+            var values = new List<Dictionary<string, string>>();
+
+            foreach (OcEm enemy in ____SoEnemyArray.EmArray)
             {
                 try
                 {
                     var e = AccessTools.FieldRefAccess<OcEm, SoEnemyData>(enemy, variableName);
-                    if (first)
-                    {
-                        first = false;
-                        var text = ToStringManager.Stringfy(e, header);
-                        output.Append(ToStringManager.ConstructHeader(header));
-                        output.Append(text);
-                    }
-                    else
-                    {
-                        output.Append(ToStringManager.Stringfy(e));
-                    }
+                    var value = reflector.GetTargetValues(e);
+                    LanguageUtils.English();
+                    value["EnglishName"] = e.Name;
+                    LanguageUtils.Japanese();
+                    value["JapaneseName"] = e.Name;
+                    values.Add(value);
                 }
                 catch { }
-
             }
-            File.WriteAllText(filePath, output.ToString());
+
+            SingletonMonoBehaviour<FileWriter>.Inst.Write(fileName, header, values);
         }
     }
 }

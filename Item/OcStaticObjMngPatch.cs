@@ -13,34 +13,31 @@ namespace ListUp
     [HarmonyPatch("setupSpanwer")]
     class OcStaticObjMngPatch
     {
-
-        static string filePath = @"d:\StaticObjList.txt";
-
         public static void Postfix(List<OcStaticObj_Spawner> ____ObjBuff_Spawner)
         {
+            var reflector = new Reflector<SoEnemyData>();
 
-            bool first = true;
-            List<string> header = new List<string>();
-            StringBuilder output = new StringBuilder(1000000);
-            List<int> list = new List<int>();
+            var header = reflector.GetHeader();
+            header.Insert(0, "JapaneseName");
+            header.Insert(0, "EnglishName");
+            var values = new List<Dictionary<string, string>>();
+
+            List<int> IDs = new List<int>();
             foreach (OcStaticObj_Spawner ocStaticObj_Spawner in ____ObjBuff_Spawner)
             {
-                var target = ocStaticObj_Spawner.GetComponentInChildren<OcStaticObj>(true).SoEnemyData;
-                if (list.Contains(target.ID)) continue;
-                else list.Add(target.ID);
-                if (first)
-                {
-                    first = false;
-                    var text = ToStringManager.Stringfy(target, header);
-                    output.Append(ToStringManager.ConstructHeader(header));
-                    output.Append(text);
-                }
-                else
-                {
-                    output.Append(ToStringManager.Stringfy(target));
-                }
+                var soEnemyData = ocStaticObj_Spawner.GetComponentInChildren<OcStaticObj>(true).SoEnemyData;
+                if (IDs.Contains(soEnemyData.ID)) continue;
+                else IDs.Add(soEnemyData.ID);
+
+                var value = reflector.GetTargetValues(soEnemyData);
+                LanguageUtils.English();
+                value["EnglishName"] = soEnemyData.Name;
+                LanguageUtils.Japanese();
+                value["JapaneseName"] = soEnemyData.Name;
+                values.Add(value);
             }
-            File.WriteAllText(filePath, output.ToString());
+
+            SingletonMonoBehaviour<FileWriter>.Inst.Write("StaticObjList", header, values);
         }
     }
 }

@@ -13,27 +13,26 @@ namespace ListUp
     [HarmonyPatch("OnUnityAwake")]
     class OcResidentDataPatch
     {
-        static string filePath = @"d:\EnchantList.txt";
         static void Postfix(SoEnchantDataList ____enchantDataList)
         {
-            bool first = true;
-            List<string> header = new List<string>();
-            StringBuilder output = new StringBuilder(100000);
-            foreach (var enchant in ____enchantDataList.GetAll())
+            var reflector = new Reflector<SoEnchantment>();
+
+            var header = reflector.GetHeader();
+            header.Insert(0, "JapaneseName");
+            header.Insert(0, "EnglishName");
+            var values = new List<Dictionary<string, string>>();
+
+            foreach (SoEnchantment enchant in ____enchantDataList.GetAll())
             {
-                if (first)
-                {
-                    first = false;
-                    var text = ToStringManager.Stringfy(enchant, header);
-                    output.Append(ToStringManager.ConstructHeader(header));
-                    output.Append(text);
-                }
-                else
-                {
-                    output.Append(ToStringManager.Stringfy(enchant));
-                }
+                var value = reflector.GetTargetValues(enchant);
+                LanguageUtils.English();
+                value["EnglishName"] = enchant.DisplayName;
+                LanguageUtils.Japanese();
+                value["JapaneseName"] = enchant.DisplayName;
+                values.Add(value);
             }
-            File.WriteAllText(filePath, output.ToString());
+
+            SingletonMonoBehaviour<FileWriter>.Inst.Write("EnchantList", header, values);
         }
     }
 }

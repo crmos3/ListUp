@@ -8,13 +8,19 @@ using HarmonyLib;
 
 namespace ListUp
 {
-    [BepInPlugin("com.github.craftopia.mod.listUp", "ListUp", "1.0.0.0")]
+    [BepInPlugin("listUp", "ListUp", "2.0.0.0")]
     public class Patcher : BaseUnityPlugin
     {
         void Awake()
         {
             var harmony = new Harmony("ListUp");
             harmony.PatchAll();
+
+            // wiki
+            gameObject.AddComponent<FileWriter>().Init(10000, @"d:\", ".txt", "|", "|\n", "|");
+
+            // csv
+            // gameObject.AddComponent<FileWriter>().Init(10000, @"d:\", ".csv", "", "\n", ",");
         }
     }
 }
